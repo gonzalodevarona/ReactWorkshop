@@ -2,12 +2,13 @@ import * as React from 'react';
 import MovieCard from '../components/MovieCard';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
+import { requirePropFactory } from '@mui/material';
 
 function Home() {
   const[movieList, setMovieList] = useState([])
   
   const avatar = {
-    image: '../resources/test.png',
+    image: require('../resources/test.png'),
     name: 'Avatar',
     rating: '3'
   }
