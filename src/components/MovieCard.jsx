@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 
 
-function MovieCard() {
+function MovieCard({movie}) {
 
   const styleBigRectangle = {
     maxWidth: 485,
@@ -27,19 +27,20 @@ function MovieCard() {
   }
 
   return (
+    
     <Card sx={[styleBigRectangle, {m:5, borderRadius:2}]}>
       <CardActionArea sx={styleBigRectangle}>
         
         <CardMedia
           component="img"
-          image={require("../resources/test.png")}
+          src={movie.image}
           alt="Portada de película"
           sx={styleImgRectangle}
         />
         <CardContent>
-          <Box sx={{fontWeight:'bold', fontSize:18, pb:1}}>Hola</Box>
+          <Box sx={{fontWeight:'bold', fontSize:18, pb:1}}>{movie.name}</Box>
           <Box>Votación</Box>
-          <Rating name="half-rating-read" value={2.5} precision={0.5} readOnly />
+          <Rating name="half-rating-read" value={Number(movie.rating)} precision={0.5} readOnly />
 
         </CardContent>
       </CardActionArea>
