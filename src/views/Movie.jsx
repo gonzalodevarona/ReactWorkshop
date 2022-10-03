@@ -59,7 +59,7 @@ function Movie() {
   }, [singleMovie]);
 
 
-
+console.log(singleMovie);
   
   return (
     <Box sx={{
@@ -120,7 +120,7 @@ function Movie() {
                 }}>Now you rate it below!</Box>
             <Rating
             name="simple-controlled"
-            value={Number(2)}
+            value={Number(singleMovie.vote_average)/2}
             size="large"
             precision={0.5}
             onChange={(event, newValue) => {
