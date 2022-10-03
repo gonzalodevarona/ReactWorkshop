@@ -4,56 +4,46 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import { useState, useEffect } from 'react';
 import axiosBase from '../config/axiosBase';
-import { Route } from "react-router-dom";
 import NotFound from './NotFound';
+
 
 
 
 function Movie() {
   let params = useParams()
 
-  const[singleMovie, setSingleMovie] = useState([])
-  const[poster, setPoster] = useState([])
-
- 
+  const[singleMovie, setSingleMovie] = useState({})
+  
 
   useEffect(() => {
     async function fetchData(){
       
       // Please note that the request path is between `...` instead of '...'  
       let request = await axiosBase.get(`/movie/${params.id}`+process.env.REACT_APP_API_KEY);
-      console.log(request)
+      console.log(request.data)
       
       if(request.status === 200)
         setSingleMovie(request.data);
-        
-      else
-        <Route exact path='/${params.id}' component={<NotFound/>}  /> 
-        return <NotFound/>;
-
+      
       
       return request;
     }
 
- 
-
     fetchData();
-    
-    
-  }, []);
+        
+  }, [params.id]);
 
   
 
   const urlImg = `https://image.tmdb.org/t/p/w300/${singleMovie.poster_path}`
   
   return (
-    <Box sx={{
+    <>
+    {singleMovie.id  ? <Box sx={{
         display:'flex',
         ml:20
         }}
     >
-        
-        
         
         <Box 
           component='img' 
@@ -84,7 +74,7 @@ function Movie() {
               pb:2
             }}
             >
-              {singleMovie.original_title}
+              {singleMovie.title}
             </Box>
             
             <Box>
@@ -116,7 +106,9 @@ function Movie() {
             }}
             />
         </Box>
-    </Box>
+    </Box> 
+    : <NotFound/>}
+    </>
   )
 }
 

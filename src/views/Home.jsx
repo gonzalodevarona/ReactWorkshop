@@ -29,7 +29,7 @@ function Home() {
           
         }
       }
-    
+      console.log(movies);
       setMovieList(movies);
 
       return request;
