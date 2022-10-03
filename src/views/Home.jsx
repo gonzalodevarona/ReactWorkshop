@@ -7,13 +7,6 @@ import axios from '../config/axiosBase';
 function Home() {
   const[movieList, setMovieList] = useState([])
   
-  const avatar = {
-    x: movieList,
-    image: require('../resources/test.png'),
-    name: 'Avatar',
-    rating: '3'
-  }
-
 
   useEffect(() => {
     async function fetchData(){
@@ -50,7 +43,6 @@ function Home() {
 
   const renderMovies = () => {
 
-
     return movieList.map((movie) => (
       <MovieCard movie={movie} key={movie.id}/>
     ));
@@ -58,10 +50,23 @@ function Home() {
   
   
  console.log(movieList);
+  const styleGrid = {
+    maxWidth:'100%',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)' ,
+    textAlign:'center'
+  }
   return (
-    <Box>
-      {renderMovies()}
-    </Box>
+    
+      <Box 
+        direction="column"
+        alignItems="center"
+        justifyContent="center" 
+        sx={styleGrid}
+      >
+        {renderMovies()}
+      </Box>
+    
   )
 }
 

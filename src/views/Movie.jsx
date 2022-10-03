@@ -4,11 +4,8 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import { useState, useEffect } from 'react';
 import axiosBase from '../config/axiosBase';
-import axiosImg from '../config/axiosImg';
 import { Route } from "react-router-dom";
-
 import NotFound from './NotFound';
-import { fontSize } from '@mui/system';
 
 
 
@@ -47,19 +44,7 @@ function Movie() {
 
   
 
-  useEffect(() => {
-    async function fetchImg(){
-      let requestImg = await axiosImg.get('/ojDg0PGvs6R9xYFodRct2kdI6wC.jpg');
-      setPoster(requestImg.data)
-
-      return requestImg;
-    }
-
-    fetchImg();
-  }, [singleMovie]);
-
-
-console.log(singleMovie);
+  const urlImg = `https://image.tmdb.org/t/p/w300/${singleMovie.poster_path}`
   
   return (
     <Box sx={{
@@ -72,7 +57,7 @@ console.log(singleMovie);
         
         <Box 
           component='img' 
-          src='https://image.tmdb.org/t/p/w300/ojDg0PGvs6R9xYFodRct2kdI6wC.jpg'
+          src={urlImg}
           alt='Movie poster'
           sx={{
             my:2,
