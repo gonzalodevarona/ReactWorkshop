@@ -26,6 +26,7 @@ function MovieCard({movie}) {
     
   }
 
+  console.log(movie.x)
   return (
     
     <Card sx={[styleBigRectangle, {m:5, borderRadius:2}]}>
@@ -48,5 +49,5 @@ function MovieCard({movie}) {
   )
 }
 
-//sx={{ maxWidth: 359, height:359, width:239 }}
+
 export default MovieCard
