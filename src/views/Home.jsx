@@ -2,7 +2,7 @@ import * as React from 'react';
 import MovieCard from '../components/MovieCard';
 import Box from '@mui/material/Box';
 import { useState, useEffect } from 'react';
-import axios from '../config/axiosConfig';
+import axios from '../config/axiosBase';
 
 function Home() {
   const[movieList, setMovieList] = useState([])

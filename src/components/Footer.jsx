@@ -21,7 +21,7 @@ function Footer() {
         >
 
             <p style={styleWhiteLetters}>
-                Por <a style={styleWhiteLetters} href='https://github.com/gonzalodevarona'>Gonzalo De Varona</a> && <a style={styleWhiteLetters} href='https://github.com/bjuan210302'>Juan Diego Bustamante</a>
+                Powered by <a style={styleWhiteLetters} href='https://github.com/gonzalodevarona'>Gonzalo De Varona</a> && <a style={styleWhiteLetters} href='https://github.com/bjuan210302'>Juan Diego Bustamante</a>
             </p>
             
         </Box>
