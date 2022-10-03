@@ -17,17 +17,26 @@ function Home() {
 
   useEffect(() => {
     async function fetchData(){
-      let movies = []
+      let moviesArray = []
       let request = await axios.get('movie/popular'+process.env.REACT_APP_API_KEY);
-      movies.push(request.data.results);
+      moviesArray.push(request.data.results);
 
       request = await axios.get('movie/top_rated'+process.env.REACT_APP_API_KEY);
-      movies.push(request.data.results);
+      moviesArray.push(request.data.results);
 
       // ENDPOINT NOT WORKING
       // request = await axios.get('movie/latest'+process.env.REACT_APP_API_KEY);
       // movies.push(request.data.results);
 
+
+      let movies = []
+      for (var i = 0; i < moviesArray.length; i++) {
+        for (var j = 0; j < moviesArray[0].length; j++) {
+          movies.push(moviesArray[i][j])
+          
+        }
+      }
+    
       setMovieList(movies);
 
       return request;
@@ -36,12 +45,22 @@ function Home() {
     fetchData();
     
   }, []);
-  
-  
 
+
+
+  const renderMovies = () => {
+
+
+    return movieList.map((movie) => (
+      <MovieCard movie={movie} key={movie.id}/>
+    ));
+  };
+  
+  
+ console.log(movieList);
   return (
     <Box>
-        <MovieCard movie={avatar}></MovieCard>
+      {renderMovies()}
     </Box>
   )
 }

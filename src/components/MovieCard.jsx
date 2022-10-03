@@ -26,7 +26,9 @@ function MovieCard({movie}) {
     
   }
 
-  console.log(movie.x)
+  
+const url = `https://image.tmdb.org/t/p/w300/${movie.poster_path}`
+
   return (
     
     <Card sx={[styleBigRectangle, {m:5, borderRadius:2}]}>
@@ -34,14 +36,14 @@ function MovieCard({movie}) {
         
         <CardMedia
           component="img"
-          src={movie.image}
+          src= {url}
           alt="Portada de película"
           sx={styleImgRectangle}
         />
         <CardContent>
-          <Box sx={{fontWeight:'bold', fontSize:18, pb:1}}>{movie.name}</Box>
+          <Box sx={{fontWeight:'bold', fontSize:18, pb:1}}>{movie.original_title}</Box>
           <Box>Votación</Box>
-          <Rating name="half-rating-read" value={Number(movie.rating)} precision={0.5} readOnly />
+          <Rating name="half-rating-read" value={Number(movie.vote_average)/2} precision={0.5} readOnly />
 
         </CardContent>
       </CardActionArea>
