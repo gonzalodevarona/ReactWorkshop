@@ -13,6 +13,7 @@ function Movie() {
   let params = useParams()
 
   const[singleMovie, setSingleMovie] = useState({})
+  const[guestSession, setGuestSession] = useState({})
   
 
   useEffect(() => {
@@ -20,12 +21,15 @@ function Movie() {
       
       // Please note that the request path is between `...` instead of '...'  
       let request = await axiosBase.get(`/movie/${params.id}`+process.env.REACT_APP_API_KEY);
-      console.log(request.data)
       
       if(request.status === 200)
         setSingleMovie(request.data);
       
+      request = await axiosBase.get('/authentication/guest_session/new'+process.env.REACT_APP_API_KEY);
       
+      if(request.status === 200)
+        setGuestSession(request.data.guest_session_id);
+    
       return request;
     }
 
@@ -36,6 +40,15 @@ function Movie() {
   
 
   const urlImg = `https://image.tmdb.org/t/p/w300/${singleMovie.poster_path}`
+
+  async function rateMovie(rate){
+    rate= Number(rate)*2;
+    let response = await axiosBase.post(`/movie/${singleMovie.id}/rating${process.env.REACT_APP_API_KEY}&guest_session_id=${guestSession}`, {value: rate })
+
+    return response;
+  }
+
+  
   
   return (
     <>
@@ -98,9 +111,7 @@ function Movie() {
             value={Number(singleMovie.vote_average)/2}
             size="large"
             precision={0.5}
-            onChange={(event, newValue) => {
-                //setValue(newValue);
-            }}
+            onChange={(event, newValue) => rateMovie(newValue)}
             sx={{
               px:2
             }}
