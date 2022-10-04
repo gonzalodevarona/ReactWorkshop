@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/ReactWorkshop/static/css/main.073c9b0a.css",
-    "main.js": "/ReactWorkshop/static/js/main.1d47362a.js",
+    "main.js": "/ReactWorkshop/static/js/main.28fde08b.js",
     "static/js/787.fdcc58c3.chunk.js": "/ReactWorkshop/static/js/787.fdcc58c3.chunk.js",
     "static/media/logo.svg": "/ReactWorkshop/static/media/logo.bf7f470b3821af1da7fa249c87dadea3.svg",
     "index.html": "/ReactWorkshop/index.html",
     "main.073c9b0a.css.map": "/ReactWorkshop/static/css/main.073c9b0a.css.map",
-    "main.1d47362a.js.map": "/ReactWorkshop/static/js/main.1d47362a.js.map",
+    "main.28fde08b.js.map": "/ReactWorkshop/static/js/main.28fde08b.js.map",
     "787.fdcc58c3.chunk.js.map": "/ReactWorkshop/static/js/787.fdcc58c3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.1d47362a.js"
+    "static/js/main.28fde08b.js"
   ]
 }
