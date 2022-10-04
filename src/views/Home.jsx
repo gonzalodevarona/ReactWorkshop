@@ -29,7 +29,7 @@ function Home() {
           
         }
       }
-      console.log(movies);
+      
       setMovieList(movies);
 
       return request;
@@ -49,7 +49,6 @@ function Home() {
   };
   
   
- console.log(movieList);
   const styleGrid = {
     maxWidth:'100%',
     display: 'grid',
