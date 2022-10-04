@@ -16,7 +16,7 @@ function Header() {
         }}
         >
 
-            <a href='/ReactComponent' >
+            <a href='/ReactWorkshop/' >
                 <Logo style={{width:583,height:46 }}>
             </Logo></a>
 
