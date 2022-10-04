@@ -5,6 +5,7 @@ import Rating from '@mui/material/Rating';
 import { useState, useEffect } from 'react';
 import axiosBase from '../config/axiosBase';
 import NotFound from './NotFound';
+import { Button } from '@mui/material';
 
 
 
@@ -14,6 +15,15 @@ function Movie() {
 
   const[singleMovie, setSingleMovie] = useState({})
   const[guestSession, setGuestSession] = useState({})
+  const [ isAlertVisible, setIsAlertVisible ] = React.useState(false);
+
+  const handleStarClick = () => {
+    setIsAlertVisible(true);
+    setTimeout(() => {
+      setIsAlertVisible(false);
+    }, 5000);
+
+  }
   
 
   useEffect(() => {
@@ -48,6 +58,12 @@ function Movie() {
     return response;
   }
 
+  async function deleteMovie(){
+    setIsAlertVisible(false);
+    let response = await axiosBase.delete(`/movie/${singleMovie.id}/rating${process.env.REACT_APP_API_KEY}&guest_session_id=${guestSession}`)
+
+    return response;
+  }
   
   
   return (
@@ -111,11 +127,26 @@ function Movie() {
             value={Number(singleMovie.vote_average)/2}
             size="large"
             precision={0.5}
-            onChange={(event, newValue) => rateMovie(newValue)}
+            onChange={(event, newValue) => {
+              rateMovie(newValue); 
+              handleStarClick();
+            }}
             sx={{
-              px:2
+              px:2,
+              mb:1
             }}
             />
+            {isAlertVisible && 
+            <Box>
+              <Button 
+                sx={{
+                  ml:5
+                }}
+                onClick={deleteMovie}
+              >Delete vote</Button>
+              <Box>Your vote has been submitted</Box>
+            </Box>}
+            
         </Box>
     </Box> 
     : <NotFound/>}
